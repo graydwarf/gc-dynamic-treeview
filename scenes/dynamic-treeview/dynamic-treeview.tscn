@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/dynamic-treeview/dynamic-treeview.gd" type="Script" id=1]
+
+[node name="DynamicTreeviewExample" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -34.0
+script = ExtResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 85.0
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1024.0
+margin_bottom = 75.0
+text = "- All nodes were added dynamically from a dictionary. 
+- Selecting a folder will display it's tree path.
+- Selecting a leaf node will retrieve a value from the dictionary and display it.
+- Leaf nodes have custom style applied to help distinguish them from their parent nodes."
+
+[node name="OutputLineEdit" type="LineEdit" parent="VBoxContainer"]
+margin_top = 89.0
+margin_right = 1024.0
+margin_bottom = 113.0
+size_flags_horizontal = 3
+text = "Select any node"
+
+[node name="Tree" type="Tree" parent="VBoxContainer"]
+margin_top = 117.0
+margin_right = 1024.0
+margin_bottom = 566.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="item_selected" from="VBoxContainer/Tree" to="." method="_on_Tree_item_selected"]
